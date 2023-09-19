@@ -27,5 +27,5 @@ interface FileStorageConfigurationInterface
     /**
      * @return string
      */
-    public function getFileStorageName(): string;
+    public function getFilesystemName(): string;
 }

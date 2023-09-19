@@ -32,22 +32,22 @@ class S3FileStorageUrlBuilder implements FileStorageUrlBuilderInterface
     protected const ADAPTER_CLASS_NAME = 'SprykerDemo\\Service\\FlysystemAws3v3FileSystem\\Plugin\\Flysystem\\Aws3v3FilesystemBuilderPlugin';
 
     /**
-     * @param string $storageFileName
+     * @param string $filePath
      * @param \SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration\FileStorageConfigurationInterface $fileStorageConfiguration
      *
      * @return string
      */
-    public function buildFileUrl(string $storageFileName, FileStorageConfigurationInterface $fileStorageConfiguration): string
+    public function buildFileUrl(string $filePath, FileStorageConfigurationInterface $fileStorageConfiguration): string
     {
         $bucket = $fileStorageConfiguration->getParameter(static::PARAMETER_BUCKET, true);
         $region = $fileStorageConfiguration->getParameter(static::PARAMETER_REGION, true);
         $path = $fileStorageConfiguration->getParameter(static::PARAMETER_PATH);
 
         if ($path !== null) {
-            return sprintf('https://s3.%s.amazonaws.com/%s/%s/%s', $region, $bucket, trim($path, '/'), $storageFileName);
+            return sprintf('https://s3.%s.amazonaws.com/%s/%s/%s', $region, $bucket, trim($path, '/'), $filePath);
         }
 
-        return sprintf('https://s3.%s.amazonaws.com/%s/%s', $region, $bucket, $storageFileName);
+        return sprintf('https://s3.%s.amazonaws.com/%s/%s', $region, $bucket, $filePath);
     }
 
     /**

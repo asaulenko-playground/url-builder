@@ -25,12 +25,12 @@ class FileStorageConfigurationFactory implements FileStorageConfigurationFactory
     }
 
     /**
-     * @param string $fileStorageName
+     * @param string $filesystemName
      *
      * @return \SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration\FileStorageConfigurationInterface
      */
-    public function createFileStorageConfiguration(string $fileStorageName): FileStorageConfigurationInterface
+    public function createFileStorageConfiguration(string $filesystemName): FileStorageConfigurationInterface
     {
-        return new FileStorageConfiguration($fileStorageName, $this->config);
+        return new FileStorageConfiguration($filesystemName, $this->config);
     }
 }

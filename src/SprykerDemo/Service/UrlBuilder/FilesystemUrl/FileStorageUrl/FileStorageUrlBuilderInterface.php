@@ -12,12 +12,12 @@ use SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration\FileStorageConfig
 interface FileStorageUrlBuilderInterface
 {
     /**
-     * @param string $storageFileName
+     * @param string $filePath
      * @param \SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration\FileStorageConfigurationInterface $fileStorageConfiguration
      *
      * @return string
      */
-    public function buildFileUrl(string $storageFileName, FileStorageConfigurationInterface $fileStorageConfiguration): string;
+    public function buildFileUrl(string $filePath, FileStorageConfigurationInterface $fileStorageConfiguration): string;
 
     /**
      * @param string $adapterClassName

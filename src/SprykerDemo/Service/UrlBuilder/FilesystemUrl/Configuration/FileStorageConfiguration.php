@@ -25,15 +25,15 @@ class FileStorageConfiguration implements FileStorageConfigurationInterface
     /**
      * @var string
      */
-    private string $fileStorageName;
+    protected string $filesystemName;
 
     /**
-     * @param string $fileStorageName
+     * @param string $filesystemName
      * @param \SprykerDemo\Service\UrlBuilder\UrlBuilderConfig $config
      */
-    public function __construct(string $fileStorageName, UrlBuilderConfig $config)
+    public function __construct(string $filesystemName, UrlBuilderConfig $config)
     {
-        $this->fileStorageName = $fileStorageName;
+        $this->filesystemName = $filesystemName;
         $this->config = $config;
 
         $this->assertConfig();
@@ -44,7 +44,7 @@ class FileStorageConfiguration implements FileStorageConfigurationInterface
      */
     public function getAdapterClassName(): string
     {
-        return $this->getParameter(static::PARAMETER_ADAPTER_CLASS_NAME);
+        return $this->getParameter(static::PARAMETER_ADAPTER_CLASS_NAME, true);
     }
 
     /**
@@ -57,27 +57,27 @@ class FileStorageConfiguration implements FileStorageConfigurationInterface
      */
     public function getParameter(string $parameterName, bool $failOnEmpty = false)
     {
-        $parameterName = $this->config->getFilesystemConfiguration()[$this->fileStorageName][$parameterName] ?? null;
+        $parameterValue = $this->config->getFilesystemConfiguration()[$this->filesystemName][$parameterName] ?? null;
 
-        if ($parameterName === null && $failOnEmpty) {
+        if ($parameterValue === null && $failOnEmpty) {
             throw new StorageConfigurationException(
                 sprintf(
                     'Configuration parameter "%s" for file storage "%s" not set.',
                     $parameterName,
-                    $this->fileStorageName,
+                    $this->filesystemName,
                 ),
             );
         }
 
-        return $parameterName;
+        return $parameterValue;
     }
 
     /**
      * @return string
      */
-    public function getFileStorageName(): string
+    public function getFilesystemName(): string
     {
-        return $this->fileStorageName;
+        return $this->filesystemName;
     }
 
     /**
@@ -87,13 +87,13 @@ class FileStorageConfiguration implements FileStorageConfigurationInterface
      */
     protected function assertConfig(): void
     {
-        $fileStorageConfig = $this->config->getFilesystemConfiguration()[$this->fileStorageName] ?? null;
+        $fileStorageConfig = $this->config->getFilesystemConfiguration()[$this->filesystemName] ?? null;
 
         if ($fileStorageConfig === null) {
             throw new StorageConfigurationException(
                 sprintf(
                     'Configuration for file storage "%s" not found.',
-                    $this->fileStorageName,
+                    $this->filesystemName,
                 ),
             );
         }
@@ -102,7 +102,7 @@ class FileStorageConfiguration implements FileStorageConfigurationInterface
             throw new StorageConfigurationException(
                 sprintf(
                     'Spryker adapter class name not found in "%s" configuration.',
-                    $this->fileStorageName,
+                    $this->filesystemName,
                 ),
             );
         }

@@ -10,10 +10,10 @@ namespace SprykerDemo\Service\UrlBuilder\FilesystemUrl;
 interface FilesystemUrlBuilderInterface
 {
     /**
-     * @param string $storageFileName
-     * @param string $fileStorageName
+     * @param string $filePath
+     * @param string $filesystemName
      *
      * @return string
      */
-    public function buildFileUrl(string $storageFileName, string $fileStorageName): string;
+    public function buildFileUrl(string $filePath, string $filesystemName): string;
 }

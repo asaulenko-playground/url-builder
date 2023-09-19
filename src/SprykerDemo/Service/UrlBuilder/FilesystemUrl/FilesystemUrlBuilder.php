@@ -35,17 +35,17 @@ class FilesystemUrlBuilder implements FilesystemUrlBuilderInterface
     }
 
     /**
-     * @param string $storageFileName
-     * @param string $fileStorageName
+     * @param string $filePath
+     * @param string $filesystemName
      *
      * @return string
      */
-    public function buildFileUrl(string $storageFileName, string $fileStorageName): string
+    public function buildFileUrl(string $filePath, string $filesystemName): string
     {
-        $fileStorageConfiguration = $this->fileStorageConfigurationFactory->createFileStorageConfiguration($fileStorageName);
+        $fileStorageConfiguration = $this->fileStorageConfigurationFactory->createFileStorageConfiguration($filesystemName);
         $fileStorageUrlBuilder = $this->getFileStorageUrlBuilder($fileStorageConfiguration);
 
-        return $fileStorageUrlBuilder->buildFileUrl($storageFileName, $fileStorageConfiguration);
+        return $fileStorageUrlBuilder->buildFileUrl($filePath, $fileStorageConfiguration);
     }
 
     /**

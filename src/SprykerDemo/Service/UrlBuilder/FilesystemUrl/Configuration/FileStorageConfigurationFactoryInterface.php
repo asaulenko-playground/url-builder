@@ -10,9 +10,9 @@ namespace SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration;
 interface FileStorageConfigurationFactoryInterface
 {
     /**
-     * @param string $fileStorageName
+     * @param string $filesystemName
      *
      * @return \SprykerDemo\Service\UrlBuilder\FilesystemUrl\Configuration\FileStorageConfigurationInterface
      */
-    public function createFileStorageConfiguration(string $fileStorageName): FileStorageConfigurationInterface;
+    public function createFileStorageConfiguration(string $filesystemName): FileStorageConfigurationInterface;
 }
