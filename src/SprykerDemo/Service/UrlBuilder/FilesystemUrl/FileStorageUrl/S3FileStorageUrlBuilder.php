@@ -29,7 +29,7 @@ class S3FileStorageUrlBuilder implements FileStorageUrlBuilderInterface
     /**
      * @var string
      */
-    protected const ADAPTER_CLASS_NAME = 'SprykerDemo\\Service\\FlysystemAws3v3FileSystem\\Plugin\\Flysystem\\Aws3v3FilesystemBuilderPlugin';
+    protected const ADAPTER_CLASS_NAME = 'Spryker\\Service\\FlysystemAws3v3FileSystem\\Plugin\\Flysystem\\Aws3v3FilesystemBuilderPlugin';
 
     /**
      * @param string $filePath

@@ -65,7 +65,7 @@ class FilesystemUrlBuilder implements FilesystemUrlBuilderInterface
 
         throw new UrlBuilderException(
             sprintf(
-                'Url builder not configuration for "%s" adapter class. ',
+                'Url builder is not configured for "%s" adapter class. ',
                 $fileStorageConfiguration->getAdapterClassName(),
             ),
         );
